@@ -10,7 +10,7 @@ const firestore = firebase.firestore();
 const addLaporan = async(req,res) =>{
     try {
         const data = req.body;
-        await firestore.collection('reports').doc().set({ data, date: date.format(new Date(), 'DD-MMM-YYYY HH:mm:ss') });
+        await firestore.collection('reports').doc().set({ ...data, date: date.format(new Date(), 'DD-MMM-YYYY HH:mm:ss') });
         res.send('Record Saved Successfully');
     } catch (error) {
         res.status(400).send(error.message);
